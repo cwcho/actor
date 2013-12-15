@@ -12,11 +12,8 @@ def index(request):
 @csrf_exempt
 def sign_in(request):
     from ymb.models import Customer
-    print request.POST['email']
-    print request.POST['password']
-    from ymb.models import Customer
     try:
-        Customer.objects.get(Q(email__exact=request.POST['email']) & Q(pwd__exact=request.POST['password']))
+        a = Customer.objects.get(Q(email__exact=request.POST['email']) & Q(pwd__exact=request.POST['password']))
     except Customer.DoesNotExist:
         return HttpResponseRedirect("/sign_in_fail")
     else:
@@ -39,9 +36,7 @@ def proc_sign_up(request):
     return HttpResponseRedirect("/sign_up_result")
 
 def sign_up_result(request):
-    latest_customer_list = Customer.objects.order_by('-id')[:5]
-    context = {'latest_customer_list': latest_customer_list}
-    return render(request, 'ymb//sign_up_result.html', context)
+    return render(request, 'ymb//sign_up_result.html')
 
 def check_email(request):
     from ymb.models import Customer
