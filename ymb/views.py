@@ -49,5 +49,11 @@ def check_address(request):
     else:
         return HttpResponse("true")
 
+def order(request):
+    latest_customer_list = Customer.objects.order_by('-id')[:5]
+    context = {'latest_customer_list': latest_customer_list}
+    return render(request, 'ymb/order.html', context)
+
+
 #def sign_up_result(request):
 #    

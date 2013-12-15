@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^menu$', views.menu, name='menu'),
     url(r'^check_email$', views.check_email, name='check_email'),
     url(r'^check_address$', views.check_address, name='check_address'),
+    url(r'^order$', views.order, name='order'),
 )
