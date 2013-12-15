@@ -39,3 +39,33 @@ class Order_specific(models.Model):
     def __unicode__(self):
         return self.id
 
+class zipcode(models.Model):
+    zipcode     = models.CharField(max_length=6)
+    zipseq      = models.PositiveIntegerField()
+    sido        = models.CharField(max_length=21)
+    gugun       = models.CharField(max_length=25)
+    eupmyun     = models.CharField(max_length=12)
+    streetcode  = models.CharField(max_length=12)
+    street      = models.CharField(max_length=30)
+    bldnum1	= models.PositiveIntegerField()
+    bldnum2	= models.PositiveIntegerField()
+    bldgcode    = models.CharField(max_length=26)
+    bld_a       = models.CharField(max_length=60)
+    bld_b       = models.CharField(max_length=70)
+    dongcode    = models.CharField(max_length=10)
+    dong        = models.CharField(max_length=16)
+    def __unicode__(self):
+        return self.id
+
+
+
+
+
+
+
+
+
+
+
+
+
