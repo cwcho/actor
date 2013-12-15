@@ -124,6 +124,7 @@ $(function(){
 		$.get("/check_email?email=" + $("#email").val(), function( data ) {
 			if(data == "false")
 				checkEmailOk = true;
+                alert("사용가능한 주소입니다.");
 			else
 				alert("중복된 이메일이 있습니다.");
 		});

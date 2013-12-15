@@ -42,8 +42,10 @@ def check_address(request):
     from ymb.models import zipcode
     try:
         zipcode.objects.get(dong__exact=request.GET['dong'])
-    except Customer.DoesNotExist:
+    except zipcode.DoesNotExist:
         return HttpResponse("false")
+    except zipcode.MultipleObjectsReturned:
+        return HttpResponse("true")
     else:
         return HttpResponse("true")
 
