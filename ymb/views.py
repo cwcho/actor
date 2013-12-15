@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
+from django.views.decorators.csrf import csrf_exempt
 
 from ymb.models import Customer
 
@@ -14,5 +15,14 @@ def sign_up(request):
     context = {'latest_customer_list': latest_customer_list}
     return render(request, 'ymb/sign_up.html', context)
 
+@csrf_exempt
 def proc_sign_up(request):
-    return HttpResponse(request.POST['name'])
+    print request.POST['name']
+    print request.POST['password']
+    print request.POST['email']
+    print request.POST['address']
+    print request.POST['sex']
+    return HttpResponseRedirect("/")
+
+#def sign_up_result(request):
+#    
