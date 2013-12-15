@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     url(r'^sign_up$', views.sign_up, name='sign_up'),
     url(r'^proc_sign_up$', views.proc_sign_up, name='proc_sign_up'),
     url(r'^menu$', views.menu, name='menu'),
+    url(r'^check_email$', views.check_email, name='check_email'),
 )

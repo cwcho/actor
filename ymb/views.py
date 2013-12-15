@@ -28,5 +28,16 @@ def menu(request):
     latest_customer_list = Customer.objects.order_by('-id')[:5]
     context = {'latest_customer_list': latest_customer_list}
     return render(request, 'ymb/menu.html', context)
+
+def check_email(request):
+    from ymb.models import Customer
+    try:
+        Customer.objects.get(email__exact=request.GET['email'])
+    except Customer.DoesNotExist:
+        return HttpResponse("false")
+    else:
+        return HttpResponse("true")
+
+
 #def sign_up_result(request):
 #    
