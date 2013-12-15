@@ -36,33 +36,27 @@
                 <label for="textinput1">
                     Name
                 </label>
-                <input name="name" id="textinput1" placeholder="" value="" type="text">
+                <input id="name" name="name" id="textinput1" placeholder="" value="" type="text">
             </div>
             <div data-role="fieldcontain">
                 <label for="textinput2">
                     Password
                 </label>
-                <input name="password" id="textinput2" placeholder="" value="" type="text">
+                <input name="password" id="password1" placeholder="" value="" type="text">
             </div>
             <div data-role="fieldcontain">
                 <label for="textinput3">
                     Verify Password
                 </label>
-                <input name="" id="textinput3" placeholder="" value="" type="text">
+                <input name="" id="password2" placeholder="" value="" type="text">
             </div>
             <div data-role="fieldcontain">
                 <label for="textinput7">
                     Email
                 </label>
-                <input name="email" id="textinput7" placeholder="" value="" type="text">
+                <input id="email" name="email" id="textinput7" placeholder="" value="" type="text">
+                <a id="checkEmail" href="#" data-role="button" data-icon="check" data-inline="true">이메일 중복 확인</a>
             </div>
-            <div data-role="fieldcontain">
-                <label for="textarea2">
-                    Address
-                </label>
-                <textarea name="address" id="textarea2" placeholder=""></textarea>
-            </div>
-            <input type="submit" data-theme="b" value="주소입력">
             <div data-role="fieldcontain">
                 <fieldset data-role="controlgroup" data-type="vertical">
                     <legend>
@@ -78,6 +72,13 @@
                     </label>
                 </fieldset>
             </div>
+            <div data-role="fieldcontain">
+                <label for="textarea2">
+                    Address
+                </label>
+                <textarea name="address" id="textarea2" placeholder=""></textarea>
+            </div>
+            <input type="button" data-theme="b" value="주소입력">
             <input type="submit" value="Sign-Up">
         </form>
     </div>
@@ -89,3 +90,44 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+$(function(){
+	var checkEmailOk = false;
+	
+	$("form").submit(function(){
+		if(!$("#name").val()){
+			alert("이름을 입력하세요.");
+			return false;
+		}
+		
+		if(!$("#password1").val()){
+			alert("암호를 입력하세요.");
+			return false;
+		}
+		
+		if($("#password1").val() != $("#password2").val()){
+			alert("입력한 암호와 재확인 암호가 같지 않습니다.");
+			return false;
+		}			
+		
+		if(!checkEmailOk){
+			alert("이메일 중복 테스트를 하시기 바랍니다.");
+			return false;
+		}			
+			
+	});
+	
+	$("#checkEmail").click(function(e){
+		e.preventDefault(); //link disable
+
+		// 여기에서 ajax 호출 
+		$.get("/check_email?email=" + $("#email").val(), function( data ) {
+			if(data == "false")
+				checkEmailOk = true;
+			else
+				alert("중복된 이메일이 있습니다.");
+		});
+	});
+	
+});
+</script>

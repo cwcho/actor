@@ -38,6 +38,13 @@ def check_email(request):
     else:
         return HttpResponse("true")
 
+def address(request):
+    latest_customer_list = Customer.objects.order_by('-id')[:5]
+    context = {'latest_customer_list': latest_customer_list}
+    return render(request, 'ymb/address.html', context)
+
+def search_addr(request):
+    return HttpResponse("true")
 
 #def sign_up_result(request):
 #    
