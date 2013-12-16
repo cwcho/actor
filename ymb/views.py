@@ -18,6 +18,7 @@ def sign_in(request):
         return HttpResponseRedirect("/sign_in_fail")
     else:
         return HttpResponseRedirect("/order")
+    
 
 def sign_up(request):
     return render(request, 'ymb/sign_up.html')
