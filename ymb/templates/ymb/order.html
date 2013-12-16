@@ -50,36 +50,40 @@
         </div>
     </div>
     <div data-role="content">
-		<div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-d">
-			<div data-role="collapsible">
-				<h3>버거세트1<span class="ui-li-count"><div id="count1" style="float:right;text-align:right">0</div></span></h3>
-     			<div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
-				    <a id="minus1" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
-				    <a id="plus1" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
-				</div>
-		    </div>
-			<div data-role="collapsible">
-				<h3>버거세트2<span class="ui-li-count"><div id="count2" style="float:right;text-align:right">0</div></span></h3>
-     			<div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
-				    <a id="minus2" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
-				    <a id="plus2" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
-				</div>
-		    </div>
-			<div data-role="collapsible">
-				<h3>버거세트3<span class="ui-li-count"><div id="count3" style="float:right;text-align:right">0</div></span></h3>
-     			<div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
-				    <a id="minus3" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
-				    <a id="plus3" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
-				</div>
-		    </div>
-			<div data-role="collapsible">
-				<h3>버거세트4<span class="ui-li-count"><div id="count4" style="float:right;text-align:right">0</div></span></h3>
-     			<div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
-				    <a id="minus4" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
-				    <a id="plus4" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
-				</div>
-		    </div>
-		</div>   
+    <div data-role="collapsible-set" data-theme="c" data-content-theme="d" data-collapsed-icon="arrow-d">
+      <div data-role="collapsible">
+        <h3>버거세트1<span class="ui-li-count"><div id="count1" style="float:right;text-align:right">0</div></span></h3>
+            <input type="hidden" id="order1" name="order1"/>
+          <div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
+            <a id="minus1" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
+            <a id="plus1" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
+        </div>
+        </div>
+      <div data-role="collapsible">
+        <h3>버거세트2<span class="ui-li-count"><div id="count2" style="float:right;text-align:right">0</div></span></h3>
+          <div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
+            <input type="hidden" id="order2" name="order2"/>
+            <a id="minus2" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
+            <a id="plus2" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
+        </div>
+        </div>
+      <div data-role="collapsible">
+        <h3>버거세트3<span class="ui-li-count"><div id="count3" style="float:right;text-align:right">0</div></span></h3>
+          <div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
+            <input type="hidden" id="order3" name="order3"/>
+            <a id="minus3" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
+            <a id="plus3" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
+        </div>
+        </div>
+      <div data-role="collapsible">
+        <h3>버거세트4<span class="ui-li-count"><div id="count4" style="float:right;text-align:right">0</div></span></h3>
+          <div data-role="controlgroup" data-type="horizontal" style="text-align:right" data-mini="true">
+            <input type="hidden" id="order4" name="order4"/>
+            <a id="minus4" href="#" data-role="button" data-iconpos="notext" data-icon="minus"></a>
+            <a id="plus4" href="#" data-role="button" data-iconpos="notext" data-icon="plus"></a>
+        </div>
+        </div>
+    </div>   
     </div>
     <div data-theme="a" data-role="footer" data-position="fixed">
         <h3>
@@ -91,23 +95,27 @@
 </html>
 <script type="text/javascript">
 $(function(){
-	var count = [0,0,0,0];
-	
-	$("a[data-icon='minus']").click(function(){
-		var cntId = $(this).attr("id").charAt($(this).attr("id").length - 1);
-		var strSelect = "#count"+cntId;
-		if(count[cntId-1] > 0)
-			count[cntId-1]--;
-		$(strSelect).html(count[cntId-1]);
-	});
-	
-	$("a[data-icon='plus']").click(function(){
-		var cntId = $(this).attr("id").charAt($(this).attr("id").length - 1);
-		var strSelect = "#count"+cntId;
-		count[cntId-1]++;
-		$(strSelect).html(count[cntId-1]);
-	});
-	
+  var count = [0,0,0,0];
+  
+  $("a[data-icon='minus']").click(function(){
+    var cntId = $(this).attr("id").charAt($(this).attr("id").length - 1);
+    var strSelect = "#count"+cntId;
+    var inputSelect = "#order"+cntId;
+    if(count[cntId-1] > 0)
+      count[cntId-1]--;
+    $(strSelect).html(count[cntId-1]);
+    $(inputSelect).val(count[cntId-1]);
+  });
+  
+  $("a[data-icon='plus']").click(function(){
+    var cntId = $(this).attr("id").charAt($(this).attr("id").length - 1);
+    var strSelect = "#count"+cntId;
+    var inputSelect = "#order"+cntId;
+    count[cntId-1]++;
+    $(strSelect).html(count[cntId-1]);
+    $(inputSelect).val(count[cntId-1]);
+  });
+  
 });
 </script>
 
